@@ -25,6 +25,7 @@ function stopWords(value)
 }
 
 var filtered = stopWords(array);
+fs.writeFileSync('./salida.txt',filtered);
 
 
 console.log(filtered.length);
