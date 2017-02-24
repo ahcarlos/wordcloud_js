@@ -2,16 +2,15 @@ const fs = require('fs');
 
 let text = fs.readFileSync('./tweets.txt',"utf-8");
 let array = text.split(" ")
-
-//console.log(text);
 //console.log(array);
 console.log(array.length);
 
-function stopWords(value)
+
+function stopWords(value, sw)
 {
-  let stopWords = fs.readFileSync('./stopwords/stopwords.es',"utf-8");
-  let stopWordsArray = stopWords.split("\n");
-  console.log(stopWordsArray.length);
+  let stopWords = fs.readFileSync('./stopwords/' + sw,"utf-8");
+  let stopWordsArray = stopWords.split("\r\n");
+  console.log(stopWordsArray);
   let result = [];
 
   for (let i = 0; i < value.length; i++)
@@ -24,10 +23,19 @@ function stopWords(value)
   return result;
 }
 
-var filtered = stopWords(array);
-fs.writeFileSync('./salida.txt',filtered);
+var arrSw = ["stopwords.es", "customsw.txt", "stop-words_english_1_en.txt", "stop-words_english_2_en.txt", "stop-words_english_3_en.txt", "stop-words_english_4_google_en.txt", "stop-words_english_5_en.txt", "stop-words_english_6_en.txt"];
+var filtered = array;
 
+for (var i = 0; i < arrSw.length; i++)
+{
+  filtered = stopWords(filtered, arrSw[i]);
+}
+
+
+
+fs.writeFileSync('./salida.txt',filtered);
 
 console.log(filtered.length);
 //console.log(filtered);
 console.log((array.length - filtered.length) / array.length * 100);
+//console.log(['a','b','c'].includes('a'));
