@@ -82,6 +82,7 @@ for(let i in report) {
 console.log(words_wordcloud);
 console.log(words_wordcloud[1].text); //prueba de que se puede acceder bien al campo text
 
+//exports.words_wordcloud = words_wordcloud;
 /*
 ======== esta parte para JSON =========
 let output = JSON.stringify(words_wordcloud);
@@ -94,5 +95,5 @@ console.log(output);
 //console.log(hashtag.length);
 //console.log(users.length);
 //console.log(filtered);
-console.log((array.length - filtered.length) / array.length * 100);
+//console.log((array.length - filtered.length) / array.length * 100);
 //console.log(['a','b','c'].includes('a'));
